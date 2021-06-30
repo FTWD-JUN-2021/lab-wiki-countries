@@ -10,18 +10,22 @@ function CountriesList(props) {
     function listOfCountries() {
         return countries.map((eachCountry) => {
             return (
-                <li>
-                    <Link to={`/country/${eachCountry.cca3}`}> {eachCountry.name.common}</Link>
-                </li>
+         
+                    <Link className="list-group-item list-group-item-action" to={`/country/${eachCountry.cca3}`}> {eachCountry.name.common}</Link>
+             
             )
         })
     }
 
     return (
-        <div>
-            <ul>
+        <div className="container">
+        <div className="row">
+          <div className="col-5" style={{maxHeight: "90vh", overflow: "scroll"}}>
+            <div className="list-group">
                 {listOfCountries()}
-            </ul>
+            </div>
+            </div>
+        </div>
         </div>
     );
 }
