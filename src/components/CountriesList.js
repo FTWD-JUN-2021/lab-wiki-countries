@@ -1,16 +1,12 @@
-import React from 'react';
-import countries from '../countries.json';
 import { Link } from 'react-router-dom';
-
+import React, { useState, useEffect } from 'react';
 
 function CountriesList(props) {
 
-    console.log(countries);
 
     function listOfCountries() {
-        return countries.map((eachCountry) => {
-            return (
-         
+        return props.countries.map((eachCountry) => {
+            return (         
                     <Link className="list-group-item list-group-item-action" to={`/country/${eachCountry.cca3}`}> {eachCountry.name.common}</Link>
              
             )

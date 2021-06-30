@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function CountryDetails(props) {
+  console.log(props)
+  const [country, setCountry] = useState({})
+  
+  useEffect(() => {
+  let countryDetail = props.countries.find((findCountry)=> findCountry.cca3 === props.match.params.watermelon)
+  setCountry(countryDetail)
+  }, [props])
+
     return (
         <div>
             <div className="col-7">
-            <h1>France</h1>
+            <h1>{country.name?.common}</h1>
             <table className="table">
               <thead></thead>
               <tbody>
