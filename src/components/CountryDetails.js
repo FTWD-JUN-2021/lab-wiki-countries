@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Switch, Link, Route } from 'react-router-dom';
 
 function CountryDetails(props) {
   console.log(props)
@@ -18,19 +19,30 @@ function CountryDetails(props) {
               <tbody>
                 <tr>
                   <td style={{width: "30%"}}>Capital</td>
-                  <td>Paris</td>
+                  <td>{country.capital}</td>
                 </tr>
                 <tr>
                   <td>Area</td>
                   <td>
-                    551695 km
+                    {country.area} km
                     <sup>2</sup>
                   </td>
                 </tr>
                 <tr>
-                  <td>Borders</td>
+                  <td>Borders </td>
                   <td>
                     <ul>
+                      {country.borders?.map(eachBorder=> {
+                        let borderCountry = props.countries.find(eachCountry => eachCountry.cca3 === eachBorder)
+                      return (
+                      <li> <Link to = {borderCountry.cca3}>{borderCountry.name.common}</Link></li>
+                      
+                      )
+                      
+                      }) }
+
+                    </ul>
+                    {/* <ul>
                       <li><a href="/AND">Andorra</a></li>
                       <li><a href="/BEL">Belgium</a></li>
                       <li><a href="/DEU">Germany</a></li>
@@ -39,7 +51,7 @@ function CountryDetails(props) {
                       <li><a href="/MCO">Monaco</a></li>
                       <li><a href="/ESP">Spain</a></li>
                       <li><a href="/CHE">Switzerland</a></li>
-                    </ul>
+                    </ul> */}
                   </td>
                 </tr>
               </tbody>
